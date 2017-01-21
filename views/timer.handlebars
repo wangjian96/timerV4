@@ -1,0 +1,101 @@
+<!--Wang Jian-->
+<!--CSE270E-->
+<!--Assignment10-->
+<!--2017 Jan 14-->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Timer</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+{{#if username}}
+   <div class="alert alert-success">
+    <strong>Welcome </strong><strong id = "welc">{{username}}</strong>
+  </div>
+{{/if}}
+<div class="row">
+    <div class="col-sm-4" data-index="0">
+        <div class="panel panel-default timer0">
+            <div class="panel-heading text-center">
+                <span class='timernameheading'>Timer name</span><br>
+                <input type='text' class="timername" name='timer0name'>
+            </div>
+            <div class="panel-body showtime text-center">
+                <input type='text' class="hours" value="00" id="hr0" size='5' style='width: 30px'>
+                <input type='text' class="minutes" size="2" value="00" id='min0' style='width: 30px'>
+                <input type='text' class="seconds" size="2" value="00" id='sec0' style='width: 30px'>
+                <br><span>Done at: <span class="doneat"></span></span>
+            </div>
+            <div class="panel-footer text-center">
+                <button type="button" class="btn btn-default timerstart">Start</button>
+                <button type="button" class="btn btn-default timerstop">Stop</button>
+                <button type="button" class="btn btn-default timerresume">Resume</button>
+                <button type="button" class="btn btn-default timerresetvisibility timerreset">Reset</button>
+                <button type="button" class="btn btn-default timerdone">Done</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4" data-index="1">
+        <div class="panel panel-default timer1">
+            <div class="panel-heading text-center">
+                <span class='timernameheading'>Timer name</span><br>
+                <input type='text' class="timername" name='timer1name'>
+            </div>
+            <div class="panel-body showtime text-center">
+                <input type='text' class="hours" value="00" size='5' id='hr1' style='width: 30px'>
+                <input type='text' class="minutes" size="2" value="00" id='min1' style='width: 30px'>
+                <input type='text' class="seconds" size="2" value="00" id='sec1' style='width: 30px'>
+                <br><span>Done at: <span class="doneat"></span></span>
+            </div>
+            <div class="panel-footer text-center">
+                <button type="button" class="btn btn-default timerstart">Start</button>
+                <button type="button" class="btn btn-default timerstop">Stop</button>
+                <button type="button" class="btn btn-default timerresume">Resume</button>
+                <button type="button" class="btn btn-default timerresetvisibility timerreset">Reset</button>
+                <button type="button" class="btn btn-default timerdone">Done</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4" data-index="2">
+        <div class="panel panel-default timer2">
+            <div class="panel-heading text-center">
+                <span class='timernameheading'>Timer name</span><br>
+                <input type='text' class="timername" name='timer2name'>
+            </div>
+            <div class="panel-body showtime text-center">
+                <input type='text' class="hours" value="00" size='5' id='hr2' style='width: 30px'>
+                <input type='text' class="minutes" size="2" value="00" id='min2' style='width: 30px'>
+                <input type='text' class="seconds" size="2" value="00" id='sec2' style='width: 30px'>
+                <br><span>Done at: <span class="doneat"></span></span>
+            </div>
+            <div class="panel-footer text-center">
+                <button type="button" class="btn btn-default timerstart">Start</button>
+                <button type="button" class="btn btn-default timerstop">Stop</button>
+                <button type="button" class="btn btn-default timerresume">Resume</button>
+                <button type="button" class="btn btn-default timerresetvisibility timerreset">Reset</button>
+                <button type="button" class="btn btn-default timerdone">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="border-top: solid 1px #eee; padding-top: 1em;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <p class="text-muted">Wang Jian's Timer</p>
+                {{#if times}}
+                <p>You have visited {{times}} times -Last Access- {{date}}</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
