@@ -39,7 +39,7 @@ io.sockets.on('connection', function(socket){
                 //open connection with timer0 info and recieve data
                 socket.on('timer0 info', function(data){
                    //only emits to specific user
-                   io.emit('timer0 info'+JSON.parse(data)["username"], data);
+                   io.emit('timer0 info'+ JSON.parse(data)["username"], data);
                 });
                 //open connection with timer1 info and recieve data
                 socket.on('timer1 info', function(data){

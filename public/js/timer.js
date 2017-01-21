@@ -75,7 +75,7 @@ $(document).ready(function(){
    //store the username
    var username = $('#welc').text();
    //open a socket that only recieve infomation for timer0
-   socket.on('timer0 info' + username, function(data){
+   socket.on('timer0 info'+username, function(data){
       //parse json to string
       data = JSON.parse(data);
       console.log('data recieve: ' +data);
@@ -108,7 +108,7 @@ $(document).ready(function(){
              //check whether the state is 1 or others. If it is 1, then keeping time counting
              if(data["state"] == 1){
              intevals[4] = setInterval(function () {
-                console.log("keep counting");
+                console.log("0 keep counting");
                         //find time left and calculate hours minutes and seconds
                 var timeLeft = Math.round((doneT - $.now()) / 1000);
                 if(timeLeft < 0){timeLeft = 0;}
@@ -127,6 +127,8 @@ $(document).ready(function(){
              }, 1000);}else{
                  //if state is not 1, then stop the interval
                  clearInterval(intevals[4]);
+                 console.log('clear interval 0 in socket');
+                 clearInterval(intevals[0]);
              }
         }else{
             //if donetime is -1 which means state is 0, then reset all the fields
@@ -141,7 +143,7 @@ $(document).ready(function(){
 
    });
    //open socket only recieve information for timer1 and do exactly same as timer0 above
-   socket.on('timer1 info' + username, function(data){
+   socket.on('timer1 info'+username, function(data){
       data = JSON.parse(data);
       console.log('data recieve: ' +data);
       if(data["doneTime"] != -1){ //check whether the donetime is -1
@@ -172,7 +174,7 @@ $(document).ready(function(){
                 //keep showing the time after each seconds and detect if it is at done time
              if(data["state"] == 1){
              intevals[5] = setInterval(function () {
-                console.log("keep counting");
+                console.log("1 keep counting");
                         //find time left and calculate hours minutes and seconds
                 var timeLeft = Math.round((doneT - $.now()) / 1000);
                 if(timeLeft < 0){timeLeft = 0;}
@@ -190,6 +192,7 @@ $(document).ready(function(){
 
              }, 1000);}else{
                  clearInterval(intevals[5]);
+                 clearInterval(intevals[1]);
              }
         }else{
             $('#hr1').val('0');
@@ -203,7 +206,7 @@ $(document).ready(function(){
 
    });
    //open socket only recieve information for timer2 same as above
-   socket.on('timer2 info' + username, function(data){
+   socket.on('timer2 info'+username, function(data){
       data = JSON.parse(data);
       console.log('data recieve: ' +data);
       if(data["doneTime"] != -1){ //check whether the donetime is -1
@@ -233,6 +236,7 @@ $(document).ready(function(){
                 //keep showing the time after each seconds and detect if it is at done time
              if(data["state"] == 1){
              intevals[6] = setInterval(function () {
+                console.log('2 keep counting');
                         //find time left and calculate hours minutes and seconds
                 var timeLeft = Math.round((doneT - $.now()) / 1000);
                 if(timeLeft < 0){timeLeft = 0;}
@@ -249,6 +253,7 @@ $(document).ready(function(){
 
              }, 1000);}else{
                  clearInterval(intevals[6]);
+                 clearInterval(intevals[2]);
              }
         }else{
             $('#hr2').val('0');
@@ -475,8 +480,8 @@ $(document).ready(function(){
 		//change the button should show and hide
         detectChange(timers[dataIndex].state, element, dataIndex);
 		//stop the time
-        console.log(dataIndex);
         clearInterval(intevals[dataIndex]);
+        console.log('clear interval' + dataIndex + 'in stop');
 		//clear all other events except done
         clearEventsExcept('stop', dataIndex);
         //send json object to server
